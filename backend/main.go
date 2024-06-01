@@ -34,7 +34,11 @@ func run() error {
 
 	defer common.CloseDB()
 
-	app := fiber.New()
+	app := fiber.New(fiber.Config{
+		Network:       "tcp",
+		ServerHeader:  "Fiber",
+		AppName: "Bohan Portfolio App v1.0.1",
+	})
 
 	// add basic middleware
 	app.Use(logger.New())
